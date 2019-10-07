@@ -41,7 +41,6 @@ function turnClick(square) {
   var count = 2;
   if (count % 2 === 0) {
     turn(square.target.id, Player1);
-    tableCell.style.backgroundColor = "rgb(124, 252, 0)";
     count++;
     time();
     barStop();
@@ -54,6 +53,7 @@ function turnClick(square) {
 function turn(squareId, player) {
   originalBoard[squareId] = player;
   document.getElementById(squareId).innerText = player;
+  document.getElementById(squareId).style.backgroundColor = "rgb(124, 252, 0)";
 }
 
 
