@@ -1,5 +1,6 @@
 import "./styles.css";
 
+var count = 0;
 var originalBoard;
 const Player1 = "X";
 const Player2 = "O";
@@ -18,6 +19,13 @@ const winningCombos = [
   [4, 8, 12, 16, 20]
 ];
 
+var barTime;
+
+var barElement = document.getElementById("myBar");
+
+var width = 0;
+
+
 const cells = document.querySelectorAll(".cell");
 startGame();
 
@@ -25,16 +33,58 @@ function startGame() {
   originalBoard = Array.from(Array(25).keys());
   for (var i = 0; i < cells.length; i++) {
     cells[i].innerText = "";
-    cells[i].style.removeProperty("background-color");
     cells[i].addEventListener("click", turnClick, false);
   }
 }
 
 function turnClick(square) {
-  turn(square.target.id, Player1);
+  var count = 2;
+  if (count % 2 === 0) {
+    turn(square.target.id, Player1);
+    count++;
+    time();
+    barStop();
+    barFunction();
+  } else {
+    turn(square.target.id, Player2);
+  }
 }
 
 function turn(squareId, player) {
   originalBoard[squareId] = player;
   document.getElementById(squareId).innerText = player;
+}
+
+
+function resetSize() {
+  width = 0;
+  barElement.style.width = width + "%";
+  barElement.innerHTML = width + "%";
+}
+function time() {
+  resetSize();
+  clearInterval(id);
+  var width = 0;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (width >= 100) {
+      resetSize();
+      clearInterval(id);
+    } else {
+      width++;
+      barElement.style.width = width + "%";
+      barElement.innerHTML = Math.round(width / 10) + "s";
+    }
+  }
+}
+function barFunction() {
+  barTime = setTimeout(timeOut, 10000);
+}
+function barStop() {
+  clearTimeout(barTime);
+}
+function timeOut() {
+  alert("TIMEOUT!");
+  time();
+  count++;
 }
