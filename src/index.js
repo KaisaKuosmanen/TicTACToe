@@ -38,15 +38,18 @@ function startGame() {
 }
 
 function turnClick(square) {
-  var count = 2;
-  if (count % 2 === 0) {
-    turn(square.target.id, Player1);
-    count++;
-    time();
-    barStop();
-    barFunction();
-  } else {
-    turn(square.target.id, Player2);
+  var count = 0;
+  while (count <= 2) {
+    if (count % 2 === 0) {
+      turn(square.target.id, Player1);
+      count++;
+      time();
+      barStop();
+      barFunction();
+    } else {
+      turn(square.target.id, Player2);
+      count++;
+    }
   }
 }
 
