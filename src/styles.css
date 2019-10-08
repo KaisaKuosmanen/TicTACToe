@@ -30,7 +30,7 @@ h3 {
   color: mediumspringgreen;
 }
 
-.w3-light-grey {
+.progress {
   margin-left: auto;
   margin-right: auto;
   color: #000 !important;
@@ -39,19 +39,11 @@ h3 {
   padding: 3px;
 }
 
-.w3-container {
+.indeterminate {
   color: #000;
   width: 306px;
 }
 
-.w3-center {
-  text-align: center !important;
-}
-
-.w3-green {
-  color: #fff !important;
-  background-color: red !important;
-}
 
 .col {
   border: 1px solid #212121;
